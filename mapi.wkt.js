@@ -65,8 +65,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	var $ = __webpack_require__(1),
-	    _ = __webpack_require__(2);
+	var $ = __webpack_require__(1);
+	var _ = __webpack_require__(2);
+	var WktNoConflict = window.Wkt;
+
+	window.Wkt = __webpack_require__(3);
+
+	__webpack_require__(4);
 
 	//Polyfill Array.isArray;
 	if (!Array.isArray) {
@@ -74,10 +79,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			return Object.prototype.toString.call(arg) === '[object Array]';
 		};
 	}
-
-	window.Wkt = __webpack_require__(3);
-
-	__webpack_require__(4);
 
 	var MapiWkt = {
 		wkt: Wkt,
@@ -99,7 +100,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				wkt = wkt.replace('\n', '').replace('\r', '').replace('\t', '');
 			}
 
-			var wicket = new Wkt.Wkt();
+			var wicket = new this.wkt.Wkt();
 			wicket.read(wkt);
 
 			var obj = wicket.toObject(options); // Make an object
@@ -138,7 +139,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			var groupId = _ref2.groupId;
 			var id = _ref2.id;
 
-			var wicket = new Wkt.Wkt();
+			var wicket = new this.wkt.Wkt();
 
 			console.log(wicket);
 
@@ -161,7 +162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 	};
 
-	window.Wkt = null;
+	window.Wkt = WktNoConflict;
 
 	module.exports = MapiWkt;
 

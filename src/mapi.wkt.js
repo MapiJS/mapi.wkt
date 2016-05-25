@@ -1,5 +1,10 @@
-var $ = require('jquery'),
-	_ = require('underscore');
+var $ = require('jquery');
+var	_ = require('underscore');
+var WktNoConflict = window.Wkt;
+
+window.Wkt = require('wicket/wicket');
+
+require('wicket/wicket-gmap3');
 
 //Polyfill Array.isArray;
 if (!Array.isArray) {
@@ -7,10 +12,6 @@ if (!Array.isArray) {
 		return Object.prototype.toString.call(arg) === '[object Array]';
 	};
 }
-
-window.Wkt = require('wicket/wicket');
-
-require('wicket/wicket-gmap3');
 
 let MapiWkt = {
 	wkt: Wkt,
@@ -25,7 +26,7 @@ let MapiWkt = {
 			wkt = wkt.replace('\n', '').replace('\r', '').replace('\t', '');
 		}
 
-		var wicket = new Wkt.Wkt();
+		var wicket = new this.wkt.Wkt();
 		wicket.read(wkt);
 
 		var obj = wicket.toObject(options); // Make an object
@@ -62,7 +63,7 @@ let MapiWkt = {
 	},
 
 	getWKTFromObject({groupId, id}) {
-		var wicket = new Wkt.Wkt();
+		var wicket = new this.wkt.Wkt();
 		
 		console.log(wicket);
 		
@@ -86,6 +87,6 @@ let MapiWkt = {
 	}
 }
 
-window.Wkt = null;
+window.Wkt = WktNoConflict;
 
 module.exports = MapiWkt;
