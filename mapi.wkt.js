@@ -141,8 +141,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			var wicket = new this.wkt.Wkt();
 
-			console.log(wicket);
-
 			if (id) {
 				if (this.objects[groupId][id]) {
 					wicket.fromObject(this.objects[groupId][id]);
