@@ -1,0 +1,25 @@
+{
+  "name": "mapi.wkt",
+  "description": "An easy to use wrapper for Google Maps API",
+  "main": "mapi.wkt.js",
+  "authors": [
+    "Thiago Ribeiro - thiagofribeiro@gmail.com"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "google",
+    "maps"
+  ],
+  "homepage": "https://github.com/thiagofribeiro/mapi.wkt",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

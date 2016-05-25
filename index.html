@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mapi JS</title>
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/underscore/underscore-min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3"> </script>
+	
+	<script src="node_modules/mapi/mapi.js"></script>
+	<script src="mapi.wkt.js"></script>
+
+</head>
+<body>
+	<div id="test">Loading map...</div>
+	<button onclick="getWkt();">Get wkt</button>
+	<button onclick="addWkt();">Add wkt object</button>
+	<div>
+		<textarea id="result">MULTIPOLYGON (((40 40, 20 45, 45 30, 40 40)), ((20 35, 10 30, 10 10, 30 5, 45 20, 20 35), (30 20, 20 15, 20 25, 30 20)))</textarea>
+	</div>
+	<script type="text/javascript">
+	var mapi;
+	function getWkt() {
+		$('#result').val(mapi.getWKTFromObject({groupId: 'default', id: 1}));
+	}
+	function addWkt() {
+		mapi.addObjectFromWKT({
+			groupId: 'default', 
+			id: 'poligon',
+			wkt: $('#result').val(),
+			onClick: function(obj) {
+				console.log(obj, this);
+			}
+		});
+	}
+	
+	$(function () {
+		Mapi.registerPlugin(MapiWkt);
+
+		mapi = new Mapi({
+			element: '#test'
+		});
+
+		mapi.addMarker({
+			groupId: 'default',
+			id: 1,
+			lat: -23.45123, 
+			lng: -47.45621
+		});
+		
+		
+	});
+	</script>
+</body>
+</html>
