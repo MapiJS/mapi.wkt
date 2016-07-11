@@ -28,6 +28,7 @@
 			groupId: 'default', 
 			id: 'poligon',
 			wkt: $('#result').val(),
+			content: 'WKT: \n\n' + $('#result').val(),
 			onClick: function(obj) {
 				console.log(obj, this);
 			}
@@ -41,11 +42,11 @@
 			element: '#test'
 		});
 
-		mapi.addMarker({
+		mapi.addObjectFromWKT({
 			groupId: 'default',
 			id: 1,
-			lat: -23.45123, 
-			lng: -47.45621
+			content: 'Added wkt: POINT(-47.45621 -23.45123)',
+			wkt: 'POINT(-47.45621 -23.45123)'
 		});
 		
 		

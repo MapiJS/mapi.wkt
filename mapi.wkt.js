@@ -1,6 +1,6 @@
 /*!
  * Mapi.wkt - An easy to use wrapper for Google Maps API
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Thiago Ribeiro - thiagofribeiro@gmail.com
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -89,8 +89,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			var _ref$id = _ref.id;
 			var id = _ref$id === undefined ? _.uniqueId('wkt') : _ref$id;
 			var wkt = _ref.wkt;
+			var content = _ref.content;
 
-			var options = _objectWithoutProperties(_ref, ['groupId', 'id', 'wkt']);
+			var options = _objectWithoutProperties(_ref, ['groupId', 'id', 'wkt', 'content']);
 
 			var mapi = this;
 
@@ -107,6 +108,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			var addObject = function addObject(object, idx) {
 				object.setMap(mapi.map);
+
+				object.mapiOptions = object.mapiOptions || {};
+				object.mapiOptions.content = content;
 
 				if (idx) {
 					mapi.addObject({

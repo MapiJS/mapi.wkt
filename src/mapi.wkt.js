@@ -16,7 +16,7 @@ if (!Array.isArray) {
 let MapiWkt = {
 	wkt: Wkt,
 
-	addObjectFromWKT({groupId = 'wkt', id = _.uniqueId('wkt'), wkt, ...options}) {
+	addObjectFromWKT({groupId = 'wkt', id = _.uniqueId('wkt'), wkt, content, ...options}) {
 		var mapi = this;
 		
 		if (typeof wkt === 'object') {
@@ -33,6 +33,9 @@ let MapiWkt = {
 
 		var addObject = function (object, idx) {
 			object.setMap(mapi.map);
+
+			object.mapiOptions = object.mapiOptions || {};
+			object.mapiOptions.content = content;
 			
 			if(idx) {
 				mapi.addObject({
